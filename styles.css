@@ -1,0 +1,229 @@
+body {
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e5cead;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.containerform {
+    width: 40%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-right: 700px; /* Añadido para separar el formulario de la lista de productos */
+    margin-top: 50px
+}
+
+.containerform form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+    padding: 60px;
+}
+
+.containerform label {
+    margin-bottom: 10px;
+}
+
+.containerform input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el contenedor de la lista de productos */
+.containerlista {
+    width: 45%; /* Misma anchura que el formulario */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 550px;
+    margin-bottom: 500px;
+    margin-top: -500px;
+}
+
+.containerlista h2 {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px; /* Quita el margen superior para que esté más cerca del formulario */
+    padding: 10px;
+}
+
+.containerlista ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilos para el contenedor principal */
+.divs {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.divs {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.divEditarProductos {
+    width: 70%;
+}
+
+.divEditarProductos h2 {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-right: 60px;
+    padding: 10px;
+}
+
+.divEditarProductos #btnOcultarFormularioEdicion {
+    margin-left: 50px;
+}
+
+.divBuscadorProductos {
+    width: 30%;
+}
+
+.divBuscadorProductos h2 {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: 35px;
+    padding: 10px;
+}
+
+h1 {
+    color: #fff;
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#btnMostrarFormularioBusqueda,
+#btnOcultarFormularioEdicion {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form,
+#productosSection,
+#resultado {
+    width: 45%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 50px;
+}
+
+#listaProductos {
+    background-color: #fff;
+    width: 45%; /* Se asigna el mismo ancho que el formulario */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#btnCalcularPrecio {
+    margin-left: 160px;
+}
+
+#btnBorrarProductos {
+    position: relative;
+    top: 50px;
+    left: 100px;
+    transform: translate(-50%, -50%);
+    padding: 20px 20px;
+    margin-left: 100px;
+    border-radius: 10px;
+}
+
+#nombreBusqueda {
+    width: 300px;
+    margin-left: 10px;
+}
+
+#btnBuscarYCalcularPrecio {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+p {
+    text-align: center;
+    margin: 20px 0;
+}
+
+footer {
+    width: 97.9%;
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}

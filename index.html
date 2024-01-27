@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controlador de stock</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Calculadora de precios</h1>
+    </header>
+
+    <!-- Contenedor para los textos -->
+    <div class="header-texts">
+        <h2 class="left-text">--- Stock general ---</h2>
+        <h2 class="right-text">Cargar nuevos productos</h2>
+    </div>
+<div class="containerform">
+    <form id="formularioAgregarProducto">
+        <label for="nombreProducto">Nombre del producto:</label>
+        <input type="text" id="nombreProducto" name="nombreProducto">
+        <br>
+        <label for="precioProducto">Precio del producto:</label>
+        <input type="number" id="precioProducto" name="precioProducto">
+        <br>
+        <label for="precioProducto">Cantidad de stock:</label>
+        <input type="number" id="stockProducto" name="stockProducto">
+        <br>
+        <label for="precioProducto">Proveedor:</label>
+        <input type="text" id="proveedorProducto" name="proveedorProducto">
+        <br>
+        <button type="button" id="btnAgregarProducto">Agregar producto</button>
+        <!-- <button type="button" id="btnCalcularPrecio">Calcular precio</button>
+        <button type="button" id="btnBorrarProductos">Borrar productos del stock</button> -->
+    </form>
+</div>
+    <!-- Fin del formulario de agregar producto -->
+
+    <div class="containerlista">
+    <!-- Sección para mostrar los productos -->
+    <h2>Lista de productos en el stock</h2>
+    <ul id="listaProductos"></ul>
+</div>
+    <!-- Fin de la sección de mostrar los productos -->
+    <!-- Sección para edicion y busqueda -->
+<div class="divs">
+    <div class="divEditarProductos">
+        <h2>Editar productos del stock:</h2>
+        <div id="formularioEdicion">
+            <button type="button" id="btnMostrarFormularioBusqueda">Abrir formulario de Edición</button>
+            <button type="button" id="btnOcultarFormularioEdicion">Ocultar Formulario de Edición</button>
+
+            <!-- Área de edición -->
+            <div id="mensajeBusqueda"></div>
+            <div id="formularioBusquedaEdicion" style="display: none;">
+                <h2>Buscar y Editar Producto</h2>
+                <form id="formBusquedaEdicion">
+                    <label for="nombreBusquedaEdicion">Nombre del producto:</label>
+                    <input type="text" id="nombreBusquedaEdicion" name="nombreBusquedaEdicion">
+                    <br>
+                    <button type="button" id="btnBuscarYEditar">Buscar y Editar</button>
+                </form>
+            </div>
+
+            <div id="formularioEdicionProducto" style="display: none;">
+                <h2>Editar Producto</h2>
+                <form id="formEdicionProducto">
+                    <label for="nuevoNombreProducto">Nuevo nombre:</label>
+                    <input type="text" id="nuevoNombreProducto" name="nuevoNombreProducto">
+                    <br>
+                    <label for="nuevoPrecioProducto">Nuevo precio:</label>
+                    <input type="number" id="nuevoPrecioProducto" name="nuevoPrecioProducto">
+                    <br>
+                    <button type="button" id="btnGuardarCambios">Guardar Cambios</button>
+                </form>
+            </div>
+            <!-- Fin del área de edición -->
+        </div>
+    </div>
+    <div class="divBuscadorProductos">
+        <h2>Buscador</h2>
+            <label for="nombreBusqueda">Buscar producto por nombre</label>
+            <input type="text" id="nombreBusqueda" name="nombreBusqueda">
+            <br>
+            <button type="button" id="btnBuscarYCalcularPrecio">Buscar y Calcular precio</button>
+    </div>
+</div>
+    <!-- fin Sección para edicion y busqueda -->
+    <h2>Productos cargados:</h2>
+    <p>----------------------</p>
+    <br>
+    <p id="resultado"></p>
+    <script defer src="./js/main.js"></script>
+    </body>
+    <footer>
+        <p>&copy; 2023 Calculadora de precios</p>
+    </footer>
+</html>
