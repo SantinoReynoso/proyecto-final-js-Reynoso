@@ -18,21 +18,29 @@ document.addEventListener("DOMContentLoaded", function () {
         listaProductos.innerHTML = "";
         for (const producto of productosEnStock) {
             const li = document.createElement("li");
-            li.textContent = `\nEl producto ${producto.nombre} tiene un precio de lista de: $${producto.precio.toFixed(2)}\n`;
+            li.innerHTML = `<br> Producto ${producto.nombre}<br>
+                            Tiene un precio de lista de: $${producto.precio.toFixed(2)}.<br>
+                            Cantidad de stock: ${producto.stock}.<br>
+                            Proveedor: ${producto.proveedor}<br>`;
             listaProductos.appendChild(li);
         }
     }
+    
 
     // Función que agrega un producto al stock y lo guarda en localStorage
     function agregarProducto() {
         const nombreProducto = document.getElementById("nombreProducto").value;
         const precioProducto = document.getElementById("precioProducto").value;
-
+        const stockProducto = document.getElementById("stockProducto").value;
+        const proveedorProducto = document.getElementById("proveedorProducto").value;
+    
         // Valido que no estén vacíos los campos
-        if (nombreProducto !== "" && precioProducto !== "") {
+        if (nombreProducto !== "" && precioProducto !== "" && stockProducto !== "" && proveedorProducto !== "") {
             const nuevoProducto = {
                 nombre: nombreProducto,
-                precio: parseFloat(precioProducto)
+                precio: parseFloat(precioProducto),
+                stock: parseInt(stockProducto),
+                proveedor: proveedorProducto
             };
             productosEnStock.push(nuevoProducto);
             // Guardar productos en localStorage
@@ -40,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             actualizarListaProductos();
         }
     }
+    
 
     // Función que calcula el precio con IVA y ganancia de todos los productos juntos
     function calcularPrecio() {
@@ -156,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mensajeBusqueda.style.display = "block";
     }
     // ------------- AREA DE FUNCIONES--------------------
+
 
 
     // Event Listeners
