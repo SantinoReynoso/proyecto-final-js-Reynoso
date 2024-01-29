@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    
+
     <header>
         <br>
         <h1>Gestor de Stock</h1>
@@ -24,7 +24,6 @@
             <br>
             <br>
             <label for="nombreProducto">Nombre del producto:</label>
-            <br>
             <input type="text" id="nombreProducto" name="nombreProducto" placeholder="Ingrese el nombre del producto...">
             <br>
             <label for="precioProducto">Precio del producto:</label>
@@ -55,7 +54,7 @@
                 <option value="price-asc">Precio: Bajo a Alto</option>
                 <option value="title-asc">Nombre: A-Z</option>
             </select>
-            <button type="button" class="css-button-sliding-to-bottom--grey">Borrar producto del stock</button>
+            <button type="button" id="btnBorrarProductos" class="css-button-sliding-to-bottom--grey">Borrar producto del stock</button>
             <br>
             <br>
             <br>
@@ -63,56 +62,51 @@
         <!-- boton para ordenar -->
     </div>
 
-
-<!-- de aca oara abajo ordenar -->
-
-<!-- fin seccion para mostrar los productos -->
-
     <!-- boton para calcular y para borrar -->
-     <button type="button" id="btnCalcularPrecio">Calcular precio</button>
-     <!-- Sección para edicion y busqueda -->
-<div class="divs">
-    <div class="divEditarProductos">
-        <h2>Editar productos del stock:</h2>
-        <div id="formularioEdicion">
-            <button type="button" id="btnMostrarFormularioBusqueda">Abrir formulario de Edición</button>
-            <button type="button" id="btnOcultarFormularioEdicion">Ocultar Formulario de Edición</button>
+    <button type="button" id="btnCalcularPrecio">Calcular precio</button>
+    <!-- Sección para edicion y busqueda -->
+    <div class="divs">
+        <div class="divEditarProductos">
+            <h2>Editar productos del stock:</h2>
+            <div id="formularioEdicion">
+                <button type="button" id="btnMostrarFormularioBusqueda">Abrir formulario de Edición</button>
+                <button type="button" id="btnOcultarFormularioEdicion">Ocultar Formulario de Edición</button>
 
-            <!-- Área de edición -->
-            <div id="mensajeBusqueda"></div>
-            <div id="formularioBusquedaEdicion" style="display: none;">
-                <h2>Buscar y Editar Producto</h2>
-                <form id="formBusquedaEdicion">
-                    <label for="nombreBusquedaEdicion">Nombre del producto:</label>
-                    <input type="text" id="nombreBusquedaEdicion" name="nombreBusquedaEdicion">
-                    <br>
-                    <button type="button" id="btnBuscarYEditar">Buscar y Editar</button>
-                </form>
-            </div>
+                <!-- Área de edición -->
+                <div id="mensajeBusqueda"></div>
+                <div id="formularioBusquedaEdicion" style="display: none;">
+                    <h2>Buscar y Editar Producto</h2>
+                    <form id="formBusquedaEdicion">
+                        <label for="nombreBusquedaEdicion">Nombre del producto:</label>
+                        <input type="text" id="nombreBusquedaEdicion" name="nombreBusquedaEdicion">
+                        <br>
+                        <button type="button" id="btnBuscarYEditar">Buscar y Editar</button>
+                    </form>
+                </div>
 
-            <div id="formularioEdicionProducto" style="display: none;">
-                <h2>Editar Producto</h2>
-                <form id="formEdicionProducto">
-                    <label for="nuevoNombreProducto">Nuevo nombre:</label>
-                    <input type="text" id="nuevoNombreProducto" name="nuevoNombreProducto">
-                    <br>
-                    <label for="nuevoPrecioProducto">Nuevo precio:</label>
-                    <input type="number" id="nuevoPrecioProducto" name="nuevoPrecioProducto">
-                    <br>
-                    <button type="button" id="btnGuardarCambios">Guardar Cambios</button>
-                </form>
+                <div id="formularioEdicionProducto" style="display: none;">
+                    <h2>Editar Producto</h2>
+                    <form id="formEdicionProducto">
+                        <label for="nuevoNombreProducto">Nuevo nombre:</label>
+                        <input type="text" id="nuevoNombreProducto" name="nuevoNombreProducto">
+                        <br>
+                        <label for="nuevoPrecioProducto">Nuevo precio:</label>
+                        <input type="number" id="nuevoPrecioProducto" name="nuevoPrecioProducto">
+                        <br>
+                        <button type="button" id="btnGuardarCambios">Guardar Cambios</button>
+                    </form>
+                </div>
+                <!-- Fin del área de edición -->
             </div>
-            <!-- Fin del área de edición -->
         </div>
-    </div>
-    <div class="divBuscadorProductos">
-        <h2>Buscador</h2>
+        <div class="divBuscadorProductos">
+            <h2>Buscador</h2>
             <label for="nombreBusqueda">Buscar producto por nombre</label>
             <input type="text" id="nombreBusqueda" name="nombreBusqueda">
             <br>
             <button type="button" id="btnBuscarYCalcularPrecio">Buscar y Calcular precio</button>
+        </div>
     </div>
-</div>
     <!-- fin Sección para edicion y busqueda -->
     <h2>Productos cargados:</h2>
     <p>----------------------</p>

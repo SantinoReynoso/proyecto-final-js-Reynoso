@@ -16,16 +16,101 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función que actualiza la lista de productos en la página web
     function actualizarListaProductos() {
         listaProductos.innerHTML = "";
-        for (const producto of productosEnStock) {
-            const li = document.createElement("li");
-            li.innerHTML = `<br> Producto ${producto.nombre}<br>
-                            Tiene un precio de lista de: $${producto.precio.toFixed(2)}.<br>
-                            Cantidad de stock: ${producto.stock}.<br>
-                            Proveedor: ${producto.proveedor}<br>`;
-            listaProductos.appendChild(li);
+        const maxProductosPorPagina = 5;
+        const totalProductos = productosEnStock.length;
+        const numPaginas = Math.ceil(totalProductos / maxProductosPorPagina);
+
+        for (let pagina = 0; pagina < numPaginas; pagina++) {
+            const startIndex = pagina * maxProductosPorPagina;
+            const endIndex = Math.min(startIndex + maxProductosPorPagina, totalProductos);
+            const paginaProductos = productosEnStock.slice(startIndex, endIndex);
+
+            const paginaLista = document.createElement("div");
+            paginaLista.classList.add("pagina-lista");
+
+            for (const producto of paginaProductos) {
+                const li = document.createElement("li");
+                li.innerHTML = `<br> - PRODUCTO: ${producto.nombre}<br>
+                                - PRECIO LISTA: $${producto.precio.toFixed(2)}.<br>
+                                - CANTIDAD DE STOCK: ${producto.stock}.<br>
+                                - PROVEEDOR: ${producto.proveedor}<br>
+                                _____________________________________`;
+                paginaLista.appendChild(li);
+            }
+
+            listaProductos.appendChild(paginaLista);
+        }
+
+        if (numPaginas > 1) {
+            agregarBarraNavegacion(numPaginas);
         }
     }
-    
+
+    // Función para agregar la barra de navegación
+    function agregarBarraNavegacion(numPaginas) {
+        const barraNavegacion = document.createElement("div");
+        barraNavegacion.classList.add("barra-navegacion");
+
+        for (let i = 0; i < numPaginas; i++) {
+            const botonPagina = document.createElement("button");
+            botonPagina.textContent = i + 1;
+            botonPagina.addEventListener("click", function() {
+                mostrarPagina(i);
+            });
+            barraNavegacion.appendChild(botonPagina);
+        }
+
+        listaProductos.appendChild(barraNavegacion);
+    }
+
+    // Función para mostrar la página seleccionada
+    function mostrarPagina(pagina) {
+        const paginas = document.querySelectorAll(".pagina-lista");
+        paginas.forEach((paginaLista, index) => {
+            if (index === pagina) {
+                paginaLista.style.display = "block";
+            } else {
+                paginaLista.style.display = "none";
+            }
+        });
+    }
+
+    // Función que ordena en base al selector
+    function ordenarProductos() {
+        const selectOrden = document.getElementById("sort-select");
+        const opcionSeleccionada = selectOrden.value;
+
+        switch (opcionSeleccionada) {
+            case "default":
+                // Orden predeterminado: el último producto agregado primero
+                productosEnStock.reverse();
+                break;
+            case "price-desc":
+                // Precio: Alto a Bajo
+                productosEnStock.sort((a, b) => b.precio - a.precio);
+                break;
+            case "price-asc":
+                // Precio: Bajo a Alto
+                productosEnStock.sort((a, b) => a.precio - b.precio);
+                break;
+            case "title-asc":
+                // Nombre: A-Z
+                productosEnStock.sort((a, b) => a.nombre.localeCompare(b.nombre));
+                break;
+            default:
+                // Orden predeterminado si no se selecciona ninguna opción válida
+                productosEnStock.reverse();
+                break;
+        }
+
+        // Actualizar la lista de productos con el nuevo orden
+        actualizarListaProductos();
+    }
+
+    // Event listener para el cambio en el selector de orden
+    document.getElementById("sort-select").addEventListener("change", function () {
+        ordenarProductos();
+    });
 
     // Función que agrega un producto al stock y lo guarda en localStorage
     function agregarProducto() {
@@ -33,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const precioProducto = document.getElementById("precioProducto").value;
         const stockProducto = document.getElementById("stockProducto").value;
         const proveedorProducto = document.getElementById("proveedorProducto").value;
-    
+
         // Valido que no estén vacíos los campos
         if (nombreProducto !== "" && precioProducto !== "" && stockProducto !== "" && proveedorProducto !== "") {
             const nuevoProducto = {
@@ -48,9 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
             actualizarListaProductos();
         }
     }
-    
 
-    // Función que calcula el precio con IVA y ganancia de todos los productos juntos
+    // Función para calcular el precio con IVA y ganancia de todos los productos juntos
     function calcularPrecio() {
         resultado.innerHTML = "";
         for (const producto of productosEnStock) {
@@ -84,8 +168,13 @@ document.addEventListener("DOMContentLoaded", function () {
         productosEnStock = [];
         // Actualiza la lista y guarda en localStorage
         localStorage.setItem("productosEnStock", JSON.stringify(productosEnStock));
-        actualizarListaProductos();
+        actualizarListaProductos(); // Agregamos esta línea para actualizar la lista de productos en la página
     }
+
+    // Event Listener para el botón de borrar productos
+    document.getElementById("btnBorrarProductos").addEventListener("click", function () {
+        borrarProductos();
+    });
 
     // Función para mostrar el formulario de búsqueda y edición de producto
     function mostrarFormularioBusquedaEdicion() {
@@ -164,25 +253,24 @@ document.addEventListener("DOMContentLoaded", function () {
         mensajeBusqueda.textContent = mensaje;
         mensajeBusqueda.style.display = "block";
     }
+
+    // Obtener referencia al botón de ordenar
+    const botonOrdenar = document.querySelector('.sort-by button');
+
     // ------------- AREA DE FUNCIONES--------------------
 
-
-
-    // Event Listeners
-    document.getElementById("btnAgregarProducto").addEventListener("click", function () {
-        agregarProducto();
+    // Agregar event listener para el clic en el botón de ordenar
+    botonOrdenar.addEventListener('click', function() {
+        ordenarProductos();
     });
 
+    // Event Listeners
     document.getElementById("btnBuscarYCalcularPrecio").addEventListener("click", function () {
         buscarProductoYCalcularPrecio();
     });
 
     document.getElementById("btnCalcularPrecio").addEventListener("click", function () {
         calcularPrecio();
-    });
-
-    document.getElementById("btnBorrarProductos").addEventListener("click", function () {
-        borrarProductos();
     });
 
     //  PARA mostrar el formulario de búsqueda y edición
@@ -203,5 +291,15 @@ document.addEventListener("DOMContentLoaded", function () {
     //  ESCUCHA el botón "Guardar Cambios" en el formulario de edición
     document.getElementById("btnGuardarCambios").addEventListener("click", function () {
         guardarCambiosEdicion();
+    });
+
+    //  Event listener para el cambio en el selector de orden
+    document.getElementById("sort-select").addEventListener("change", function () {
+        ordenarProductos();
+    });
+
+    //  ESCUCHA el clic en el botón de agregar producto
+    document.getElementById("btnAgregarProducto").addEventListener("click", function () {
+        agregarProducto();
     });
 });
