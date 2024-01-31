@@ -164,3 +164,88 @@ header h1 {
     transform: scaleX(1);
 }
 
+/* boton de calcular precio */
+#btnCalcularPrecio {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 60px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#btnCalcularPrecio:hover {
+    background-color: #ccc;
+    color: #fff;
+}
+.containerboton{
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+   /* estilos para esa lista */
+   .resultado-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-container h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.divider {
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+
+
+
+/* Estilos para los botones de abrir y ocultar formulario */
+.abrir-formulario,
+.ocultar-formulario {
+    min-width: 200px; /* Reducir el ancho */
+    height: 30px; /* Reducir la altura */
+    padding: 5px 10px; /* Reducir el padding */
+}
+
+/* Estilos adicionales */
+.abrir-formulario:hover,
+.ocultar-formulario:hover {
+    color: #FFEDCB;
+}
+
+.abrir-formulario:hover:after,
+.ocultar-formulario:hover:after {
+    height: 100%;
+}
+
+.abrir-formulario:after,
+.ocultar-formulario:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    background: #1B4965;
+}
