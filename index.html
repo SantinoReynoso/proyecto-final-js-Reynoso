@@ -9,13 +9,15 @@
 </head>
 
 <body>
-
     <header>
         <br>
-        <h1>Gestor de Stock</h1>
+            <h1>Gestor de Stock</h1>
         <br>
     </header>
-    <br><br>
+    <button id="btnjsonProductos">Cargar Productos</button>
+
+    <br>
+    <br>
     <!-- formulario de agregar producto -->
     <div class="containerform">
         <form id="formularioAgregarProducto">
@@ -43,8 +45,8 @@
     <div class="containerlista">
         <!-- Sección para mostrar los productos -->
         <br>
-        <br>
         <h2>Lista de productos en el stock</h2>
+        <br>
         <ul id="listaProductos"></ul>
         <!-- boton para ordenar -->
         <div class="sort-by">
@@ -62,11 +64,9 @@
         <!-- boton para ordenar -->
     </div>
 
-
-
     <div class="divs">
         <div class="divEditarProductos">
-            <h2>Editar productos del stock:</h2>
+            <h2>Editar productos del stock</h2>
             <div id="formularioEdicion">
                 <button type="button" id="btnMostrarFormularioBusqueda" class="css-button-sliding-to-bottom--grey abrir-formulario">Abrir formulario de Edición</button>
                 <button type="button" id="btnOcultarFormularioEdicion" class="css-button-sliding-to-bottom--grey ocultar-formulario">Ocultar Formulario de Edición</button>
@@ -79,6 +79,7 @@
                         <label for="nombreBusquedaEdicion">Nombre del producto:</label>
                         <input type="text" id="nombreBusquedaEdicion" name="nombreBusquedaEdicion">
                         <br>
+                        <br>
                         <button type="button" id="btnBuscarYEditar" class="css-button-sliding-to-bottom--grey">Buscar y Editar</button>
                     </form>
                 </div>
@@ -86,17 +87,21 @@
                 <div id="formularioEdicionProducto" style="display: none;">
                     <h2>Editar Producto</h2>
                     <form id="formEdicionProducto">
-                        <label for="nuevoNombreProducto">Nuevo nombre:</label>
+                        <label for="nuevoNombreProducto"> Nuevo nombre:</label>
                         <input type="text" id="nuevoNombreProducto" name="nuevoNombreProducto">
+                        <br>
                         <br>
                         <label for="nuevoPrecioProducto">Nuevo precio:</label>
                         <input type="number" id="nuevoPrecioProducto" name="nuevoPrecioProducto">
                         <br>
+                        <br>
                         <label for="nuevoStockProducto">Nuevo stock:</label>
                         <input type="number" id="nuevoStockProducto" name="nuevoStockProducto">
                         <br>
+                        <br>
                         <label for="nuevoProveedorProducto">Nuevo proveedor:</label>
                         <input type="text" id="nuevoProveedorProducto" name="nuevoProveedorProducto">
+                        <br>
                         <br>
                         <button type="button" id="btnGuardarCambios" class="css-button-sliding-to-bottom--grey">Guardar Cambios</button>
                     </form>
@@ -108,23 +113,30 @@
         <div class="divBuscadorProductos">
             <h2>Buscador</h2>
             <label for="nombreBusqueda">Buscar producto por nombre</label>
+            <br>
+            <br>
             <input type="text" id="nombreBusqueda" name="nombreBusqueda">
             <br>
+            <br><br>
             <button type="button" id="btnBuscarYCalcularPrecio" class="css-button-sliding-to-bottom--grey">Buscar y Calcular precio</button>
         </div>
     </div>
     <!-- boton para calcular y para borrar -->
     <div class="containerboton"> 
         <button type="button" id="btnCalcularPrecio" class="css-button-sliding-to-bottom--grey">Calcular precio</button>
-        </div>
+        <button type="button" id="btnCalcularGanancia" class="css-button-sliding-to-bottom--grey">Calcular ganancia</button>
+        <button type="button" id="btnCalcularValorNeto" class="css-button-sliding-to-bottom--grey">Valor neto</button>    
+    </div>
     <!-- fin Sección para edicion y busqueda -->
     <div class="resultado-container">
         <h2>Productos cargados:</h2>
         <div class="divider"></div>
         <div id="resultado"></div>
     </div>
-    
+    <!-- librerias -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script defer src="./js/main.js"></script>
+
     </body>
     <footer>
         <p>&copy; 2023 Calculadora de precios</p>

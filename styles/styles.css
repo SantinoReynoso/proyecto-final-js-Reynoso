@@ -10,6 +10,8 @@ body {
     align-items: center;
     height: 100vh;
     overflow-x: hidden;
+    
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
 
 /* Estilos para el encabezado */
@@ -249,7 +251,10 @@ header h1 {
     color: #666;
 }
 
-
+   /* estilos click cargar productos */
+   body {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  }
 
 
 /* Estilos para los botones de abrir y ocultar formulario */
