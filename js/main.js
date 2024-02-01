@@ -148,6 +148,44 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Función para calcular la ganancia total de todos los productos
+function calcularGananciaTotal() {
+    let gananciaTotal = 0;
+    for (const producto of productosEnStock) {
+        const precioConIVA = producto.precio * 1.21;
+        const precioConGanancia = precioConIVA * 1.25;
+        const gananciaProducto = precioConGanancia - precioConIVA;
+        gananciaTotal += gananciaProducto;
+    }
+    return gananciaTotal;
+}
+// Event listener para el botón "Calcular ganancia"
+document.getElementById("btnCalcularGanancia").addEventListener("click", function () {
+    const gananciaTotal = calcularGananciaTotal();
+    const cantidadProductos = productosEnStock.length;
+    resultado.innerHTML = `La cantida de productos - ${cantidadProductos} - genera una ganancia de $${gananciaTotal.toFixed(2)}`;
+});
+
+// Función para calcular el valor neto de cada producto
+function calcularValorNeto() {
+    resultado.innerHTML = ""; // Limpiar el contenido anterior del resultado
+
+    for (const producto of productosEnStock) {
+        const valorNeto = producto.precio * producto.stock;
+
+        const productoInfo = document.createElement("p");
+        productoInfo.textContent = `El producto "${producto.nombre}" suma el valor neto de $${valorNeto.toFixed(2)}`;
+        
+        resultado.appendChild(productoInfo);
+    }
+}
+
+// Event listener para el botón "Calcular valor neto"
+document.getElementById("btnCalcularValorNeto").addEventListener("click", function () {
+    calcularValorNeto();
+});
+
+
     // Función para calcular en base al nombre del producto que quieras
     function buscarProductoYCalcularPrecio() {
         const nombreBusqueda = document.getElementById("nombreBusqueda").value;
@@ -216,7 +254,6 @@ function buscarYMostrarFormularioEdicion() {
     }
 }
 
-// Función para guardar los cambios en el producto editado
 // Función para guardar los cambios en el producto editado
 function guardarCambiosEdicion() {
     const nuevoNombre = document.getElementById("nuevoNombreProducto").value;

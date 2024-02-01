@@ -179,6 +179,38 @@ header h1 {
     background-color: #ccc;
     color: #fff;
 }
+/* boton de calcular ganancia */
+#btnCalcularGanancia {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 60px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#btnCalcularGanancia:hover {
+    background-color: #ccc;
+    color: #fff;
+}
+/* boton de calcular valor */
+#btnCalcularValorNeto {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 60px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#btnCalcularValorNeto:hover {
+    background-color: #ccc;
+    color: #fff;
+}
 .containerboton{
     background-color: #fff;
     border-radius: 8px;
@@ -186,7 +218,9 @@ header h1 {
     width: 100%;
     max-width: 400px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 30px;
+    padding-right: 500px;
+    padding-left: 500px;
     display: flex;
     justify-content: center;
 }
@@ -248,4 +282,21 @@ header h1 {
     height: 0;
     width: 100%;
     background: #1B4965;
+}
+.divEditarProductos{
+    margin-right: 700px;
+    background-color: #1B4965;
+    color: #F1F1E6;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.divBuscadorProductos{
+    background-color: #1B4965;
+    color: #F1F1E6;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
