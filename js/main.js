@@ -12,111 +12,38 @@ document.addEventListener("DOMContentLoaded", function () {
         actualizarListaProductos();
     }
 
-    // ------------- AREA DE FUNCIONES--------------------
-//-probar
-// Función para cargar los datos del archivo JSON
-function cargarProductosDesdeJSON() {
-    // Ruta del archivo JSON
-    const rutaJSON = 'datos/datos.json';
-
-    // Hacer una solicitud para obtener los datos del archivo JSON
-    fetch(rutaJSON)
-        .then(response => {
-            // Verificar si la solicitud fue exitosa
-            if (!response.ok) {
-                throw new Error('Ocurrió un error al cargar los datos.');
-            }
-            // Convertir la respuesta a formato JSON
-            return response.json();
-        })
-        .then(data => {
-            // Verificar si se recibieron datos válidos
-            if (!data || data.length === 0) {
-                throw new Error('No se encontraron datos en el archivo.');
-            }
-            // Agregar los productos al arreglo productosEnStock
-            productosEnStock = data;
-            // Actualizar la lista de productos en la página
-            actualizarListaProductos();
-            // Mostrar un Sweet Alert indicando que los productos se cargaron correctamente
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Datos de la dietetica cargados exitosamente",
-                showConfirmButton: false,
-                timer: 1500
-              });
-        })
-        .catch(error => {
-            // Mostrar un Sweet Alert indicando que ocurrió un error al cargar los productos
-            Swal.fire({
-                title: "¡Error!",
-                text: error.message,
-                icon: "error"
-            });
-        });
-}
-
-// Agregar un event listener al botón "Cargar Productos" para llamar a la función cargarProductosDesdeJSON
-document.getElementById("btnjsonProductos").addEventListener("click", function () {
-    cargarProductosDesdeJSON();
-});
-
-// fin pruebas 
-
-    // Función para mostrar el Sweet Alert la primera vez que se agrega un producto
-    function mostrarSweetAlertPrimerProducto() {
-        // Verificar si es la primera vez que se agrega un producto
-        if (!localStorage.getItem("primerProductoAgregado")) {
-            // Mostrar el Sweet Alert
-            Swal.fire({
-                title: "¡Listo!",
-                text: "Tu primer producto fue cargado exitosamente",
-                icon: "success"
-            });
-            // Guardar el estado de que se ha agregado el primer producto
-            localStorage.setItem("primerProductoAgregado", "true");
-        }
-    }
-
-    // Llamar a la función al cargar la página
-    document.addEventListener("DOMContentLoaded", function () {
-        mostrarSweetAlertPrimerProducto();
-    });
-
-    // Función que actualiza la lista de productos en la página web
-   
+    // Función para actualizar la lista de productos en la página web
     function actualizarListaProductos() {
-    listaProductos.innerHTML = ""; // Limpiar la lista de productos existente
-    const maxProductosPorPagina = 5;
-    const totalProductos = productosEnStock.length;
-    const numPaginas = Math.ceil(totalProductos / maxProductosPorPagina);
+        listaProductos.innerHTML = ""; // Limpiar la lista de productos existente
+        const maxProductosPorPagina = 5;
+        const totalProductos = productosEnStock.length;
+        const numPaginas = Math.ceil(totalProductos / maxProductosPorPagina);
 
-    for (let pagina = 0; pagina < numPaginas; pagina++) {
-        const startIndex = pagina * maxProductosPorPagina;
-        const endIndex = Math.min(startIndex + maxProductosPorPagina, totalProductos);
-        const paginaProductos = productosEnStock.slice(startIndex, endIndex);
+        for (let pagina = 0; pagina < numPaginas; pagina++) {
+            const startIndex = pagina * maxProductosPorPagina;
+            const endIndex = Math.min(startIndex + maxProductosPorPagina, totalProductos);
+            const paginaProductos = productosEnStock.slice(startIndex, endIndex);
 
-        const paginaLista = document.createElement("div");
-        paginaLista.classList.add("pagina-lista");
+            const paginaLista = document.createElement("div");
+            paginaLista.classList.add("pagina-lista");
 
-        for (const producto of paginaProductos) {
-            const li = document.createElement("li");
-            li.innerHTML = `<br> - PRODUCTO: ${producto.nombre}<br>
-                            - PRECIO LISTA: $${producto.precio.toFixed(2)}.<br>
-                            - CANTIDAD DE STOCK: ${producto.stock}.<br>
-                            - PROVEEDOR: ${producto.proveedor}<br>
-                            _____________________________________`;
-            paginaLista.appendChild(li);
+            for (const producto of paginaProductos) {
+                const li = document.createElement("li");
+                li.innerHTML = `<br> - PRODUCTO: ${producto.nombre}<br>
+                                - PRECIO LISTA: $${producto.precio.toFixed(2)}.<br>
+                                - CANTIDAD DE STOCK: ${producto.stock}.<br>
+                                - PROVEEDOR: ${producto.proveedor}<br>
+                                _____________________________________`;
+                paginaLista.appendChild(li);
+            }
+
+            listaProductos.appendChild(paginaLista); // Agregar la lista de productos al mismo sector
         }
 
-        listaProductos.appendChild(paginaLista); // Agregar la lista de productos al mismo sector
+        if (numPaginas > 1) {
+            agregarBarraNavegacion(numPaginas);
+        }
     }
-
-    if (numPaginas > 1) {
-        agregarBarraNavegacion(numPaginas);
-    }
-}
 
     // Función para agregar la barra de navegación
     function agregarBarraNavegacion(numPaginas) {
@@ -147,7 +74,7 @@ document.getElementById("btnjsonProductos").addEventListener("click", function (
         });
     }
 
-    // Función que ordena los productos en base al selector
+    // Función para ordenar los productos
     function ordenarProductos() {
         const selectOrden = document.getElementById("sort-select");
         const opcionSeleccionada = selectOrden.value;
@@ -380,6 +307,49 @@ document.getElementById("btnjsonProductos").addEventListener("click", function (
         mensajeBusqueda.style.display = "block";
     }
 
+    // Función para cargar los datos del archivo JSON
+    function cargarProductosDesdeJSON() {
+        // Ruta del archivo JSON
+        const rutaJSON = 'datos/datos.json';
+
+        // Hacer una solicitud para obtener los datos del archivo JSON
+        fetch(rutaJSON)
+            .then(response => {
+                // Verificar si la solicitud fue exitosa
+                if (!response.ok) {
+                    throw new Error('Ocurrió un error al cargar los datos.');
+                }
+                // Convertir la respuesta a formato JSON
+                return response.json();
+            })
+            .then(data => {
+                // Verificar si se recibieron datos válidos
+                if (!data || data.length === 0) {
+                    throw new Error('No se encontraron datos en el archivo.');
+                }
+                // Agregar los productos al arreglo productosEnStock
+                productosEnStock = data;
+                // Actualizar la lista de productos en la página
+                actualizarListaProductos();
+                // Mostrar un Sweet Alert indicando que los productos se cargaron correctamente
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Datos de la dietetica cargados exitosamente",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            })
+            .catch(error => {
+                // Mostrar un Sweet Alert indicando que ocurrió un error al cargar los productos
+                Swal.fire({
+                    title: "¡Error!",
+                    text: error.message,
+                    icon: "error"
+                });
+            });
+    }
+
     // Obtener referencia al botón de ordenar
     const botonOrdenar = document.querySelector('.sort-by button');
 
@@ -428,4 +398,9 @@ document.getElementById("btnjsonProductos").addEventListener("click", function (
     document.getElementById("btnAgregarProducto").addEventListener("click", function () {
         agregarProducto();
     });
+    // Agregar un event listener al botón "Cargar Productos" para llamar a la función cargarProductosDesdeJSON
+    document.getElementById("btnjsonProductos").addEventListener("click", function () {
+    cargarProductosDesdeJSON();
 });
+});
+
