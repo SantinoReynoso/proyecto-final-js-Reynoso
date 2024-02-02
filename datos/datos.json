@@ -1,21 +1,33 @@
 [
     {
-      "nombre": "Producto 1",
+      "nombre": "Almendras",
       "precio": 10.99,
       "stock": 50,
-      "proveedor": "Proveedor A"
+      "proveedor": "Frutas-Narutales"
     },
     {
-      "nombre": "Producto 2",
+      "nombre": "Nueces",
       "precio": 15.99,
       "stock": 30,
-      "proveedor": "Proveedor B"
+      "proveedor": "Frutas-Narutales"
     },
     {
-      "nombre": "Producto 3",
+      "nombre": "Palito bombón",
       "precio": 20.49,
       "stock": 20,
-      "proveedor": "Proveedor C"
+      "proveedor": "Congelados"
+    },
+    {
+      "nombre": "Palito de agua",
+      "precio": 20.50,
+      "stock": 20,
+      "proveedor": "Congelados"
+    },
+    {
+      "nombre": "Alfajor helado",
+      "precio": 20.99,
+      "stock": 50,
+      "proveedor": "Congelados"
     }
   ]
   
