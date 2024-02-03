@@ -218,8 +218,50 @@ header h1 {
     background-color: #1B4965;
     color: #F1F1E6;
     text-align: center;
-    border-radius: 30px;
+    border-radius: 20px;
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 15px;
     margin-right: 50px;
+}
+
+
+
+
+.css-button-sliding-to-bottom--grey {
+    min-width: 400px;
+    height: 60px; /* Aumenta la altura del botón */
+    font-size: 20px; /* Aumenta el tamaño de la fuente */
+    padding: 15px 30px; /* Aumenta el padding para hacer los botones más grandes */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    z-index: 0;
+    background: #fff;
+    overflow: hidden;
+    border: 2px solid #495057;
+    color: #495057;
+}
+
+.css-button-sliding-to-bottom--grey:hover {
+    color: #FFEDCB;
+}
+
+.css-button-sliding-to-bottom--grey:hover:after {
+    height: 100%;
+}
+
+.css-button-sliding-to-bottom--grey:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    background: #1B4965;
 }

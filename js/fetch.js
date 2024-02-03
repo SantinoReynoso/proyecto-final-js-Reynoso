@@ -1,9 +1,9 @@
-// Fetch
+//  Prueba Fetch
 
 // Función para cargar los datos del archivo JSON
 function cargarProductosDesdeJSON() {
     // Ruta del archivo JSON
-    const rutaJSON = 'datos/datos.json';
+    const rutaJSON = './datos/datos.json';
 
     // Hacer una solicitud para obtener los datos del archivo JSON
     fetch(rutaJSON)
@@ -22,7 +22,6 @@ function cargarProductosDesdeJSON() {
             }
             // Agregar los productos al arreglo productosEnStock
             productosEnStock = data;
-            // Actualizar la lista de productos en la página
             actualizarListaProductos();
             // Mostrar un Sweet Alert indicando que los productos se cargaron correctamente
             Swal.fire({

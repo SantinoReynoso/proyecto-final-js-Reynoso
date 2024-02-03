@@ -12,21 +12,23 @@ document.addEventListener("DOMContentLoaded", function () {
         actualizarListaProductos();
     }
 
+    // ------------- AREA DE FUNCIONES--------------------
+
     // Función para actualizar la lista de productos en la página web
     function actualizarListaProductos() {
-        listaProductos.innerHTML = ""; // Limpiar la lista de productos existente
+        listaProductos.innerHTML = ""; // Limpia la lista de productos existente
         const maxProductosPorPagina = 5;
         const totalProductos = productosEnStock.length;
         const numPaginas = Math.ceil(totalProductos / maxProductosPorPagina);
-
+    
         for (let pagina = 0; pagina < numPaginas; pagina++) {
             const startIndex = pagina * maxProductosPorPagina;
             const endIndex = Math.min(startIndex + maxProductosPorPagina, totalProductos);
             const paginaProductos = productosEnStock.slice(startIndex, endIndex);
-
+    
             const paginaLista = document.createElement("div");
             paginaLista.classList.add("pagina-lista");
-
+    
             for (const producto of paginaProductos) {
                 const li = document.createElement("li");
                 li.innerHTML = `<br> - PRODUCTO: ${producto.nombre}<br>
@@ -36,17 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
                                 _____________________________________`;
                 paginaLista.appendChild(li);
             }
-
+    
             listaProductos.appendChild(paginaLista); // Agregar la lista de productos al mismo sector
         }
-
+    
         if (numPaginas > 1) {
             agregarBarraNavegacion(numPaginas);
         }
     }
 
     // Función para agregar la barra de navegación
-    function agregarBarraNavegacion(numPaginas) {
+    function agregarBarraNavegacion(numPaginas){
         const barraNavegacion = document.createElement("div");
         barraNavegacion.classList.add("barra-navegacion");
 
@@ -168,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("btnCalcularGanancia").addEventListener("click", function () {
         const gananciaTotal = calcularGananciaTotal();
         const cantidadProductos = productosEnStock.length;
-        resultado.innerHTML = `La cantidad de productos - ${cantidadProductos} - genera una ganancia de $${gananciaTotal.toFixed(2)}`;
+        resultado.innerHTML = `La cantidad de productos - ${cantidadProductos} - genera una ganancia de $${gananciaTotal.toFixed(2)} (SI SE VENDIERA UNA UNIDAD DE CADA PRODUCTO)`;
     });
 
     // Función para calcular el valor neto de cada producto
@@ -353,7 +355,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Obtener referencia al botón de ordenar
     const botonOrdenar = document.querySelector('.sort-by button');
 
-    // ------------- AREA DE FUNCIONES--------------------
+    // ------------- FIN AREA DE FUNCIONES--------------------
+
+    AOS.init();
 
     // Agregar event listener para el clic en el botón de ordenar
     botonOrdenar.addEventListener('click', function () {
@@ -403,4 +407,5 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarProductosDesdeJSON();
 });
 });
+
 

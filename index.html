@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controlador de stock</title>
     <link rel="stylesheet" href="./styles/styles.css">
+    <!-- link AOS libreria -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
+        <div data-aos="fade-down">
         <h1>Gestor de Stock</h1>
+        </div>
     </header>
 
     <!-- Formulario de agregar producto -->
+    <div data-aos="zoom-in">
     <div class="containerform">
         <form id="formularioAgregarProducto">
             <h2>Datos del producto</h2>
@@ -28,13 +33,19 @@
             <button type="button" id="btnAgregarProducto" class="css-button-sliding-to-bottom--grey">Agregar producto</button>
         </form>
     </div>
+</div>
     <!-- Fin del formulario de agregar producto -->
 
+    <!-- Sección para cargar productos desde JSON -->
     <div class="divdatos">
+        <div data-aos="fade-left">
         <h2>Datos de la dietética listos</h2>
+        <button id="btnjsonProductos" class="css-button-sliding-to-bottom--grey">Cargar Productos</button>
+        </div>
     </div>
-    <button id="btnjsonProductos" class="css-button-sliding-to-bottom--grey">Cargar Productos</button>
+    <!-- fin Sección para cargar productos desde JSON -->
 
+    <!-- Lista de productos en el stock -->
     <div class="containerlista">
         <h2>Lista de productos en el stock</h2>
         <ul id="listaProductos"></ul>
@@ -48,7 +59,7 @@
             <button type="button" id="btnBorrarProductos" class="css-button-sliding-to-bottom--grey">Borrar producto del stock</button>
         </div>
     </div>
-
+<!-- Sección para editar productos del stock y buscar productos -->
     <div class="divs">
         <div class="divEditarProductos">
             <h2>Editar productos del stock</h2>
@@ -64,22 +75,28 @@
                         <button type="button" id="btnBuscarYEditar" class="css-button-sliding-to-bottom--grey">Buscar y Editar</button>
                     </form>
                 </div>
+                <!-- Formulario de edición de producto -->
                 <div id="formularioEdicionProducto" style="display: none;">
                     <h2>Editar Producto</h2>
                     <form id="formEdicionProducto">
                         <label for="nuevoNombreProducto">Nuevo nombre:</label>
                         <input type="text" id="nuevoNombreProducto" name="nuevoNombreProducto">
+                        <br>
                         <label for="nuevoPrecioProducto">Nuevo precio:</label>
                         <input type="number" id="nuevoPrecioProducto" name="nuevoPrecioProducto">
+                        <br>
                         <label for="nuevoStockProducto">Nuevo stock:</label>
                         <input type="number" id="nuevoStockProducto" name="nuevoStockProducto">
+                        <br>
                         <label for="nuevoProveedorProducto">Nuevo proveedor:</label>
                         <input type="text" id="nuevoProveedorProducto" name="nuevoProveedorProducto">
+                        <br>
                         <button type="button" id="btnGuardarCambios" class="css-button-sliding-to-bottom--grey">Guardar Cambios</button>
                     </form>
                 </div>
             </div>
         </div>
+        <!-- Búsqueda de productos -->
         <div class="divBuscadorProductos">
             <h2>Buscador</h2>
             <label for="nombreBusqueda">Buscar producto por nombre</label>
@@ -87,20 +104,23 @@
             <button type="button" id="btnBuscarYCalcularPrecio" class="css-button-sliding-to-bottom--grey">Buscar y Calcular precio</button>
         </div>
     </div>
-
+<!-- Botones para calcular y mostrar resultados -->
     <div class="containerboton"> 
         <button type="button" id="btnCalcularPrecio" class="css-button-sliding-to-bottom--grey">Calcular precio</button>
         <button type="button" id="btnCalcularGanancia" class="css-button-sliding-to-bottom--grey">Calcular ganancia</button>
         <button type="button" id="btnCalcularValorNeto" class="css-button-sliding-to-bottom--grey">Valor neto</button>    
     </div>
-
+<!-- Contenedor de resultados -->
     <div class="resultado-container">
         <h2>Productos cargados:</h2>
         <div class="divider"></div>
         <div id="resultado"></div>
     </div>
-
+<!-- Script de la librería SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Script de la librería aos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+     <!-- Scripts de JavaScript -->
     <script defer src="./js/main.js"></script>
     <script defer src="./js/fetch.js"></script>
 
@@ -108,5 +128,4 @@
         <p>&copy; 2023 Calculadora de precios</p>
     </footer>
 </body>
-
 </html>

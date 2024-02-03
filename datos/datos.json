@@ -28,6 +28,36 @@
       "precio": 20.99,
       "stock": 50,
       "proveedor": "Congelados"
+    },
+    {
+      "nombre": "Harina de coco",
+      "precio": 100,
+      "stock": 5,
+      "proveedor": "harinas-free"
+    },
+    {
+      "nombre": "Harina de almendra",
+      "precio": 200,
+      "stock": 10,
+      "proveedor": "harinas-free"
+    },
+    {
+      "nombre": "Harina de garbanzo",
+      "precio": 50,
+      "stock": 1,
+      "proveedor": "harinas-free"
+    },
+    {
+      "nombre": "Fecula de maiz",
+      "precio": 17,
+      "stock": 20,
+      "proveedor": "harinas-free"
+    },
+    {
+      "nombre": "Patitas de pollo",
+      "precio": 100,
+      "stock": 5,
+      "proveedor": "Congelados"
     }
   ]
   
